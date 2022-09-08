@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<section class="content">
+    <div class="main-header" style="display: flex; gap:1%;">
+        <img src="/static/img/twitter.png" style="width: 60px;" class="logo">
+        <h1>Edit</h1>
+    </div>
+    <br><br>
+  <section class="post_form">
+    <form
+      action="/edit/{{post.id}}/"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value="{{post.name}}"
+        style="
+          /* width :89.7%; */ /* margin-bottom: 10px; */
+          border: 0px;
+          width: 89.7%;
+          background: #e6fef7;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          padding: 10px;
+          font-size: 15px;
+        "
+      />
+      <textarea name="body" placeholder="What's Happening?" required>
+{{post.body}}</textarea
+      >
+      <label for="{{post.name}}"></label> <br> <br>
+      {% if post.image.url %}
+      <img src="{{ post.image.url }}" style="width:370px; height: 370px;" />
+      {% endif %}
+      <br><br>
+      <div style="display: flex; justify-content:space-between; width:90%;">
+        <input class="form-control form-control-sm" name="image" type="file" />
+        <div class="b1">
+          <a style="    text-decoration: none;
+          border: 1px solid #ccc;
+          padding: 2px;
+          color: black;
+          margin-right: 6px;
+          background-color: red;" href="{% url 'index' %}"> Cancel </a>
+          <input type="submit" value="Update" class="update-button" />
+        </div>
+      </div>
+    </form>
+  </section>
+</section>
+{% endblock %}
