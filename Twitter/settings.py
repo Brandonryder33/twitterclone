@@ -29,6 +29,9 @@ SECRET_KEY = 'django-insecure-0lcrx50*4zkfowb(3em2@b_u43m6n#eh04_ksm@@rr^nwjztu$
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+X_FRAME_OPTIONS = '*'
+CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = ['']
 
 
 # Application definition
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts',
     'cloudinary',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
